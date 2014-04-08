@@ -5,7 +5,7 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
     watch: {
       scripts: {
-        files: ['./contents/**/*'], //change to your folder
+        files: ['./assets/**/*'],
         tasks: ['compass'],
         options: {
           nospawn: true
@@ -15,14 +15,13 @@ module.exports = function(grunt) {
     compass: {
       dev: {
         options: {
-          sassDir: 'contents/scss', //change to your folder
-          cssDir: 'contents/css' //change to your folder
+          sassDir: 'assets/sass',
+          cssDir: 'assets/css'
         }
       }
     }
   });
 
-  grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-compass');
 
