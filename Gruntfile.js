@@ -1,3 +1,7 @@
+var fs = require('fs'),
+    marked = require('marked'),
+    handlebars = require('handlebars');
+
 module.exports = function(grunt) {
 
   // Project configuration.
@@ -5,8 +9,8 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
     watch: {
       scripts: {
-        files: ['./src/sass/*'],
-        tasks: ['compass'],
+        files: ['./src/sass/*', './src/*'],
+        tasks: ['compass', 'api'],
         options: {
           nospawn: true
         }
@@ -28,4 +32,14 @@ module.exports = function(grunt) {
   // Default task(s)
   grunt.registerTask('default', ['watch']);
 
+  grunt.registerTask('api', 'Build the API page.', function ( ) {
+    var api = fs.readFileSync(__dirname + "/src/api.hb", "utf8");
+    var apiHb = handlebars.compile(api);
+
+    var docs = fs.readFileSync(__dirname + "/src/api.md", "utf8");
+
+    var out = apiHb({ api: marked(docs) });
+
+    fs.writeFileSync(__dirname + "/htdocs/api/index.html", out, "utf8");
+  });
 };

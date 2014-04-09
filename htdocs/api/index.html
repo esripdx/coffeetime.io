@@ -1,0 +1,573 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <title>Coffee Time</title>
+    <link rel="shortcut icon" href="../assets/img/favicon.ico">
+    <link type="text/css" rel="stylesheet" href="../assets/css/screen.css">
+    <!--[if lt IE 9]>
+      <script src="./js/libs/selectivizr.js" type="text/javascript"></script>
+      <script src="./js/libs/html5shiv.js" type="text/javascript"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <header>
+      <nav>
+        <h3 class="navigation-title">Coffee Time</h3>
+        <ul class="navigation-list">
+          <li>
+            <a href="/">Home</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <img src="img/coffee-time-logo.svg" alt="Coffee Time" class="coffee-time-logo">
+        <h1>Coffee Time API</h1>
+      </section>
+    </header>
+
+    <main>
+      <section class="api-reference">
+        <div class="container">
+          <article class="content">
+            <h2 id="application-interface">Application Interface</h2>
+<p>The application interface for the <em>Coffee Scoreboard</em> is an opinionated
+<code>JSON</code> based API.  The returning <code>Status Code</code> will always be <code>200</code>,
+even in the case of errors, which will also be encoded as <code>JSON</code>.</p>
+<h3 id="versioning">Versioning</h3>
+<p>The application interface for the <em>Coffee Scoreboard</em> is versioned.  This
+documentation covers <em>version 1</em>.</p>
+<h3 id="authentication">Authentication</h3>
+<p>Authentication returns an <code>access_token</code> which must be used for all
+other API requests.  The access token must be presented as an HTTP
+<code>Authorization</code> header:</p>
+<pre><code>Authorization: Bearer yourtoken
+</code></pre><h3 id="parameters">Parameters</h3>
+<p>Requests can be made by sending either <code>www-form-encoded</code> data, or JSON
+data.  Just be sure to set the <code>Content-Type</code> header appropriately!</p>
+<p><em>Form Encoded</em></p>
+<pre><code>POST /1/transaction/create HTTP/1.1
+Host: coffeetime.io
+Authorization: Bearer abc123
+Content-Type: application/x-www-form-urlencoded
+
+user_id=123&amp;group_id=13&amp;amount=3&amp;note=Paying%20You%20Back&amp;
+latitude=45.5165&amp;longitude=-122.6165&amp;accuracy=100&amp;
+date=2014-04-04T09:43:00-0700
+</code></pre><p><em>JSON Encoded</em></p>
+<pre><code>POST /1/transaction/create HTTP/1.1
+Host: coffeetime.io
+Authorization: Bearer abc123
+Content-Type: application/json
+
+{
+  &quot;user_id&quot;: 123,
+  &quot;group_id&quot;: 13,
+  &quot;amount&quot;: 3,
+  &quot;note&quot;: &quot;Paying You Back&quot;,
+  &quot;latitude&quot;: 45.5165,
+  &quot;longitude&quot;: -122.6165,
+  &quot;accuracy&quot;: 100,
+  &quot;date&quot;: &quot;2014-04-04T09:43:00-0700&quot;
+}
+</code></pre><h3 id="routes">Routes</h3>
+<h4 id="post-1-auth">POST /1/auth</h4>
+<p>Exchanges a GitHub authorization code for an access token and user
+information.</p>
+<p><em>Parameters</em></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>code</td>
+<td>GitHub auth token</td>
+</tr>
+</tbody>
+</table>
+<p><em>Returns</em></p>
+<p>An object containing the <code>access token</code> that is used for authentication,
+and some user data about the authenticated user.</p>
+<pre><code class="lang-js">{
+    &quot;access_token&quot;: &quot;abc123&quot;,
+    &quot;user_id&quot;: 123,
+    &quot;username&quot;: &quot;JohnSmith&quot;,
+    &quot;display_name&quot;: &quot;John Smith&quot;,
+    &quot;avatar_url&quot;: &quot;https://github.com/images/error/octocat_happy.gif&quot;
+}
+</code></pre>
+<h4 id="post-1-device-register">POST /1/device/register</h4>
+<p>Registers a mobile device with the server, including keys for devices
+messaging.</p>
+<p><em>Parameters</em></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>uuid</td>
+<td>Unique identifier for the device</td>
+</tr>
+<tr>
+<td>token</td>
+<td>Device token (ANPS, GCM)</td>
+</tr>
+<tr>
+<td>token_type</td>
+<td>String of apns_production, apns_sandbox, or gcm</td>
+</tr>
+</tbody>
+</table>
+<p><em>Returns</em></p>
+<p>An object showing success.</p>
+<pre><code class="lang-js">{
+  &quot;status&quot;: &quot;ok&quot;
+}
+</code></pre>
+<h4 id="get-1-group-list">GET /1/group/list</h4>
+<p>Retrieves the list of groups the user tied to the access token is part of.</p>
+<p><em>Returns</em></p>
+<p>An object containing all of the groups the user is part of, as well as the
+balance in each of those groups.</p>
+<pre><code class="lang-js">{
+  &quot;groups&quot;: [
+    {
+      &quot;group_name&quot;: &quot;Special Place&quot;,
+      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
+      &quot;group_id&quot;: 123,
+      &quot;user_balance&quot;: 13,
+      &quot;min_balance&quot;: -10,
+      &quot;max_balance&quot;: 13
+    },
+    {
+      &quot;group_name&quot;: &quot;Bad Place&quot;,
+      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
+      &quot;group_id&quot;: 124,
+      &quot;user_balance&quot;: -3,
+      &quot;min_balance&quot;: -10,
+      &quot;max_balance&quot;: 13
+    }
+  ]
+}
+</code></pre>
+<h4 id="get-1-group-info">GET /1/group/info</h4>
+<p>Retrieves the current balance within the group, all users in the group,
+as well as the latest transactions up to 20.</p>
+<p><em>Parameters_</em></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>group_id</td>
+<td>Group ID to query for</td>
+</tr>
+</tbody>
+</table>
+<p><em>Returns</em></p>
+<p>An object containing users, balances, and transactions.</p>
+<pre><code class="lang-js">{
+  &quot;group_name&quot;: &quot;Special Place&quot;,
+  &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
+  &quot;user_balance&quot;: 123,
+  &quot;min_balance&quot;: -100,
+  &quot;max_balance&quot;: 150,
+  &quot;users&quot;: [
+    {
+      &quot;user_id&quot;: 13,
+      &quot;username&quot;: &quot;JohnSmith&quot;,
+      &quot;display_name&quot;: &quot;John Smith&quot;,
+      &quot;avatar_url&quot;: &quot;https://github.com/images/error/octocat_happy.gif&quot;,
+      &quot;active&quot;: true
+    }
+  ],
+  &quot;transactions&quot;: [
+    {
+      &quot;transaction_id&quot;: 200,
+      &quot;from_user_id&quot;: 13,
+      &quot;to_user_id&quot;: 14,
+      &quot;latitude&quot;: 45,
+      &quot;longitude&quot;: -122,
+      &quot;accuracy&quot;: 1000,
+      &quot;amount&quot;: 3,
+      &quot;note&quot;: &quot;Sucker&quot;,
+      &quot;date&quot;: &quot;2014-03-27T09:00:00-0700&quot;,
+      &quot;created_by&quot;: 13,
+      &quot;summary&quot;: &quot;You bought Ryan 3 coffees&quot;
+    }
+  ]
+}
+</code></pre>
+<h4 id="post-1-transaction-create">POST /1/transaction/create</h4>
+<p>Creates a transaction.</p>
+<p><em>Parameters</em></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>user_id</td>
+<td>User you are in a transaction with</td>
+</tr>
+<tr>
+<td>group_id</td>
+<td>Group you are interacting with</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>Positive or negative amount of debt in whole numbers</td>
+</tr>
+<tr>
+<td>note</td>
+<td>Optional note</td>
+</tr>
+<tr>
+<td>latitude</td>
+<td>Optional latitude</td>
+</tr>
+<tr>
+<td>longitude</td>
+<td>Optional longitude</td>
+</tr>
+<tr>
+<td>accuracy</td>
+<td>Optional accuracy</td>
+</tr>
+<tr>
+<td>location_date</td>
+<td>Optional date the location was taken</td>
+</tr>
+</tbody>
+</table>
+<p><em>Returns</em></p>
+<p>Returns the same object as <code>/1/group/info</code>.</p>
+<pre><code class="lang-js">{
+  &quot;group_name&quot;: &quot;Special Place&quot;,
+  &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
+  &quot;user_balance&quot;: 123,
+  &quot;min_balance&quot;: -100,
+  &quot;max_balance&quot;: 150,
+  &quot;users&quot;: [
+    {
+      &quot;user_id&quot;: 13,
+      &quot;username&quot;: &quot;JohnSmith&quot;,
+      &quot;display_name&quot;: &quot;John Smith&quot;,
+      &quot;avatar_url&quot;: &quot;https://github.com/images/error/octocat_happy.gif&quot;,
+      &quot;active&quot;: true
+    }
+  ],
+  &quot;transactions&quot;: [
+    {
+      &quot;transaction_id&quot;: 200,
+      &quot;from_user_id&quot;: 13,
+      &quot;to_user_id&quot;: 14,
+      &quot;latitude&quot;: 45,
+      &quot;longitude&quot;: -122,
+      &quot;accuracy&quot;: 1000,
+      &quot;amount&quot;: 3,
+      &quot;note&quot;: &quot;Sucker&quot;,
+      &quot;date&quot;: &quot;2014-03-27T09:00:00-0700&quot;,
+      &quot;created_by&quot;: 13,
+      &quot;summary&quot;: &quot;You bought Ryan 3 coffees&quot;
+    }
+  ]
+}
+</code></pre>
+<h4 id="get-1-user-info">GET /1/user/info</h4>
+<p>Retrieves user information for a user.</p>
+<p><em>Parameters</em></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>user_id</td>
+<td>Optional user id (defaults to authenticated user)</td>
+</tr>
+<tr>
+<td>group_id</td>
+<td>Optional</td>
+</tr>
+</tbody>
+</table>
+<p><em>Returns</em></p>
+<p>Returns an object containing user information.  If a group_id is given,
+balances and activity are returned as well.</p>
+<pre><code class="lang-js">{
+  &quot;user_id&quot;: 13,
+  &quot;username&quot;: &quot;JohnSmith&quot;,
+  &quot;display_name&quot;: &quot;John Smith&quot;,
+  &quot;avatar_url&quot;: &quot;https://github.com/images/error/octocat_happy.gif&quot;,
+  &quot;user_balance&quot;: 10,   // only if group_id was given
+  &quot;max_balance&quot;: 10,    // only if group_id was given
+  &quot;min_balance&quot;: -10,   // only if group_id was given
+  &quot;active&quot;: false       // only if group_id was given
+}
+</code></pre>
+<h4 id="post-1-group-create">POST /1/group/create</h4>
+<p>Creates a CoffeeTime group from a GitHub organization and adds all users
+with a zero balance.</p>
+<p><em>Parameters</em></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>github_team_id</td>
+<td>Organization ID from GitHub</td>
+</tr>
+<tr>
+<td>name</td>
+<td>Name of the organization</td>
+</tr>
+<tr>
+<td>timezone</td>
+<td>Optional Timezone (name) to be used for the organization</td>
+</tr>
+</tbody>
+</table>
+<p><em>Returns</em></p>
+<p>Returns an object containing the new group_id, group_name, and timezone.</p>
+<pre><code class="lang-js">{       
+  group_id: 1,      
+  group_name: &quot;Esri PDX&quot;,       
+  timezone: &quot;America/Los_Angeles&quot;     
+}
+</code></pre>
+<h4 id="post-1-group-update">POST /1/group/update</h4>
+<p>Updates the list of members in the group from the GitHub organization.</p>
+<p><em>Parameters</em></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>group_id</td>
+<td>Group ID to update</td>
+</tr>
+<tr>
+<td>name</td>
+<td>Optional Name of the organization</td>
+</tr>
+<tr>
+<td>timezone</td>
+<td>Optional Timezone (name) to be used for the organization</td>
+</tr>
+</tbody>
+</table>
+<p><em>Returns</em></p>
+<p>Returns an object containing the users added and removed as well as
+current group information.</p>
+<pre><code class="lang-js">{
+  &quot;group_id&quot;: 11,   
+  &quot;group_name&quot;: &quot;Esri PDX&quot;,   
+  &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,   
+  &quot;users_added&quot;: [  /* basic user profile info like in user/info */  ],   
+  &quot;users_removed&quot;: [    ] 
+}
+</code></pre>
+<h4 id="get-1-team-list">GET /1/team/list</h4>
+<p>Lists all teams the authenticated user belongs to on GitHub.</p>
+<p><em>Returns</em></p>
+<p>Returns an object containing an array of all GitHub teams the user is part
+of.</p>
+<pre><code class="lang-js">{
+  &quot;teams&quot;: [
+    &quot;github_id&quot;: 30000,
+    &quot;name&quot;: &quot;Coffee&quot;,
+    &quot;org&quot;: &quot;esri&quot;,
+    &quot;members&quot;: 18
+  ]
+}
+</code></pre>
+<h4 id="post-1-callback-create">POST /1/callback/create</h4>
+<p>Creates a callback hook that is called any time a transaction is created.</p>
+<p><em>Parameters</em></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>group_id</td>
+<td>Group ID to add a callback to</td>
+</tr>
+<tr>
+<td>url</td>
+<td>URL of the Callback</td>
+</tr>
+</tbody>
+</table>
+<p><em>Returns</em></p>
+<pre><code class="lang-js">{
+  &quot;status&quot;: &quot;ok&quot;
+}
+</code></pre>
+<h4 id="get-1-callback-list">GET /1/callback/list</h4>
+<p>Retrieves a list of callbacks and the last response.</p>
+<p><em>Parameters</em></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>group_id</td>
+<td>Group ID to query</td>
+</tr>
+</tbody>
+</table>
+<p><em>Returns</em></p>
+<p>Returns an object containing a list of callbacks and their last status.</p>
+<pre><code class="lang-js">{
+  &quot;callbacks&quot;: [
+    {
+      &quot;url&quot;: &quot;http://example.com/callback&quot;
+      &quot;last_request_date&quot;: &quot;2014-03-27T13:49:00-0700&quot;,
+      &quot;last_response_date&quot;: &quot;2014-03-27T13:49:00-0700&quot;,
+      &quot;last_response_status&quot;: &quot;ok&quot;,
+      &quot;last_response_status_code&quot;: 200
+    }
+  ]
+}
+</code></pre>
+<h4 id="get-1-callback-status">GET /1/callback/status</h4>
+<p>Retrieves the last status for a specific callback.</p>
+<p><em>Parameters</em></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>group_id</td>
+<td>Group ID to query</td>
+</tr>
+<tr>
+<td>url</td>
+<td>Callback URL to query</td>
+</tr>
+</tbody>
+</table>
+<p><em>Returns</em></p>
+<p>Returns an object containing the callback and a detailed report of the
+last status returned.</p>
+<pre><code class="lang-js">{
+  &quot;url&quot;: &quot;http://example.com/callback&quot;
+  &quot;last_request_date&quot;: &quot;2014-03-27T13:49:00-0700&quot;,
+  &quot;last_response_date&quot;: &quot;2014-03-27T13:49:00-0700&quot;,
+  &quot;last_response_status&quot;: &quot;ok&quot;,
+  &quot;last_response_status_code&quot;: 200,
+  &quot;request&quot;: &quot;POST /callback HTTP/1.1\nHOST: example.com\n....&quot;
+  &quot;response&quot;: &quot;HTTP/1.1 200 OK&quot;
+}
+</code></pre>
+<h4 id="post-1-callback-remove">POST /1/callback/remove</h4>
+<p>Removes a callback from the group.</p>
+<p><em>Parameters</em></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>group_id</td>
+<td>Group ID to query</td>
+</tr>
+<tr>
+<td>url</td>
+<td>Callback URL to remove</td>
+</tr>
+</tbody>
+</table>
+<p><em>Returns</em></p>
+<pre><code class="lang-js">{
+  &quot;status&quot;: &quot;ok&quot;
+}
+</code></pre>
+
+          </article>
+          <pre class="illustration-right">
+            <code>
+
+            ((((
+           ((((
+            ))))
+         _ .---.
+        ( |`---'|
+         \|     |
+         : .___, :
+          `-----'
+
+        >_
+
+            </code>
+          </pre>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <ul class="footer-navigation">
+          <li>
+            <a href="/api">API Reference</a>
+          </li>
+          <li>
+            <a href="#">Android</a>
+          </li>
+          <li>
+            <a href="#">iOS</a>
+          </li>
+          <li>
+            <a href="psx.esri.com">Esri PDX R&D</a>
+          </li>
+        </ul>
+      </div>
+    </footer>
+
+    <script src="assets/js/script.js" type="text/javascript"></script>
+  </body>
+</html>
