@@ -97,7 +97,7 @@ ul {
     padding-bottom: .25em;
     border-bottom: 2px solid transparent;
     @include transition(all 200ms linear);
-    &:hover {
+    &:hover, &.current {
       border-bottom: 2px solid $white;
     }
   }

@@ -9,8 +9,8 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
     watch: {
       scripts: {
-        files: ['./src/sass/*', './src/*'],
-        tasks: ['compass', 'api'],
+        files: ['./source/**/*'],
+        tasks: ['build'],
         options: {
           nospawn: true
         }
@@ -19,27 +19,38 @@ module.exports = function(grunt) {
     compass: {
       dev: {
         options: {
-          sassDir: 'src/sass',
-          cssDir: 'htdocs/assets/css'
+          sassDir: 'source/sass',
+          cssDir: 'build/assets/css'
         }
+      }
+    },
+    'http-server': {
+      'dev': {
+        root: './build',
+        port: 8080,
+        host: '0.0.0.0',
+        showDir : true,
+        autoIndex: true,
+        defaultExt: "html",
+        runInBackground: true
       }
     }
   });
 
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-compass');
+  grunt.loadNpmTasks('grunt-http-server');
 
   // Default task(s)
-  grunt.registerTask('default', ['watch']);
+  grunt.registerTask('server', ['http-server:dev']);
+  grunt.registerTask('build', ['compass', 'api']);
+  grunt.registerTask('default', ['build', 'server', 'watch']);
 
   grunt.registerTask('api', 'Build the API page.', function ( ) {
-    var api = fs.readFileSync(__dirname + "/src/api.hb", "utf8");
+    var api = fs.readFileSync(__dirname + "/source/api/index.hb", "utf8");
     var apiHb = handlebars.compile(api);
-
-    var docs = fs.readFileSync(__dirname + "/src/api.md", "utf8");
-
+    var docs = fs.readFileSync(__dirname + "/source/api/api.md", "utf8");
     var out = apiHb({ api: marked(docs) });
-
-    fs.writeFileSync(__dirname + "/htdocs/api/index.html", out, "utf8");
+    fs.writeFileSync(__dirname + "/build/api/index.html", out, "utf8");
   });
 };
