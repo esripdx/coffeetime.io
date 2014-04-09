@@ -5,7 +5,7 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
     watch: {
       scripts: {
-        files: ['./assets/**/*'],
+        files: ['./src/sass/*'],
         tasks: ['compass'],
         options: {
           nospawn: true
@@ -15,8 +15,8 @@ module.exports = function(grunt) {
     compass: {
       dev: {
         options: {
-          sassDir: 'assets/sass',
-          cssDir: 'assets/css'
+          sassDir: 'src/sass',
+          cssDir: 'htdocs/assets/css'
         }
       }
     }
