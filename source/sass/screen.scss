@@ -4,7 +4,7 @@
 
 // Colors - - - - - - - - - - - - - - - -
 $red:                             #CB4400;
-$lightred:                        #ED7264;
+$light-red:                       #ED7264;
 $green:                           #55A33B;
 $lightgreen:                      #98CC82;
 $dark-gray:                       #333333;
@@ -107,18 +107,18 @@ img {
 
 // Top Banner - - - - - - - - - - - - - - - -
 .banner {
-  padding: 2em 0 4em 0;
+  padding: 2em 0;
   color: $white;
   background-color: $green;
 }
 
 .banner-copy {
+  margin: 3em 0 2em;
   text-align: center;
 }
 
 .navigation {
   @extend %clearfix;
-  margin-bottom: 3em;
   a {
     color: $white;
     text-decoration: none;
@@ -143,6 +143,13 @@ li.navigation-title {
   padding-left: 0;
   padding-right: 1.5em;
   border-right: 2px solid $white;
+}
+
+li.navigation-end {
+  margin-left: 1.5em;
+  padding-left: 1.5em;
+  padding-right: 0;
+  border-left: 2px solid $white;
 }
 
 .logo {
@@ -188,13 +195,17 @@ li.navigation-title {
   @extend %clearfix;
 }
 
-.support {
+.light-gray {
   background-color: $lightest-gray;
+}
+
+.light-red {
+  background-color: $light-red;
 }
 
 // API Ref  - - - - - - - - - - - - - - -
 .api-reference {
-  background-color: $lightred;
+  margin: 4em 0;
 }
 
 // Footer - - - - - - - - - - - - - - - -
@@ -202,17 +213,6 @@ footer {
   padding: 4em;
   background-color: $dark-gray;
   color: $white;
-
-  ul {
-    text-align: center;
-  }
-
-  li {
-    padding-right: 2em;
-    display: inline;
-    list-style-type: none;
-    margin-bottom: 2em;
-  }
 
   .footer-title {
     padding-right: 0;

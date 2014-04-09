@@ -151,20 +151,17 @@ img {
 
 /* line 109, ../../../source/sass/screen.scss */
 .banner {
-  padding: 2em 0 4em 0;
+  padding: 2em 0;
   color: white;
   background-color: #55a33b;
 }
 
 /* line 115, ../../../source/sass/screen.scss */
 .banner-copy {
+  margin: 3em 0 2em;
   text-align: center;
 }
 
-/* line 119, ../../../source/sass/screen.scss */
-.navigation {
-  margin-bottom: 3em;
-}
 /* line 122, ../../../source/sass/screen.scss */
 .navigation a {
   color: white;
@@ -199,13 +196,21 @@ li.navigation-title {
 }
 
 /* line 148, ../../../source/sass/screen.scss */
+li.navigation-end {
+  margin-left: 1.5em;
+  padding-left: 1.5em;
+  padding-right: 0;
+  border-left: 2px solid white;
+}
+
+/* line 155, ../../../source/sass/screen.scss */
 .logo {
   width: 42.91845%;
   margin: auto;
   margin-bottom: 32px;
 }
 
-/* line 155, ../../../source/sass/screen.scss */
+/* line 162, ../../../source/sass/screen.scss */
 .content-left, .content-right {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -214,17 +219,17 @@ li.navigation-title {
   padding: 1rem;
 }
 
-/* line 161, ../../../source/sass/screen.scss */
+/* line 168, ../../../source/sass/screen.scss */
 .content-left {
   float: left;
 }
 
-/* line 166, ../../../source/sass/screen.scss */
+/* line 173, ../../../source/sass/screen.scss */
 .content-right {
   float: right;
 }
 
-/* line 171, ../../../source/sass/screen.scss */
+/* line 178, ../../../source/sass/screen.scss */
 .illustration-left, .illustration-right {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -233,42 +238,36 @@ li.navigation-title {
   text-align: center;
 }
 
-/* line 177, ../../../source/sass/screen.scss */
+/* line 184, ../../../source/sass/screen.scss */
 .illustration-left {
   float: left;
 }
 
-/* line 182, ../../../source/sass/screen.scss */
+/* line 189, ../../../source/sass/screen.scss */
 .illustration-right {
   float: right;
 }
 
-/* line 191, ../../../source/sass/screen.scss */
-.support {
+/* line 198, ../../../source/sass/screen.scss */
+.light-gray {
   background-color: #efefef;
 }
 
-/* line 196, ../../../source/sass/screen.scss */
-.api-reference {
+/* line 202, ../../../source/sass/screen.scss */
+.light-red {
   background-color: #ed7264;
 }
 
-/* line 201, ../../../source/sass/screen.scss */
+/* line 207, ../../../source/sass/screen.scss */
+.api-reference {
+  margin: 4em 0;
+}
+
+/* line 212, ../../../source/sass/screen.scss */
 footer {
   padding: 4em;
   background-color: #333333;
   color: white;
-}
-/* line 206, ../../../source/sass/screen.scss */
-footer ul {
-  text-align: center;
-}
-/* line 210, ../../../source/sass/screen.scss */
-footer li {
-  padding-right: 2em;
-  display: inline;
-  list-style-type: none;
-  margin-bottom: 2em;
 }
 /* line 217, ../../../source/sass/screen.scss */
 footer .footer-title {
