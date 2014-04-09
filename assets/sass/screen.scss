@@ -1,5 +1,141 @@
 @import "compass";
+@import "mixins";
+@import "typefaces";
+
+// Colors - - - - - - - - - - - - - - - -
+$red:                             #CB4400;
+$lightred:                        #ED7264;
+$green:                           #55A33B;
+$lightgreen:                      #98CC82;
+$dark-gray:                       #333333;
+$light-gray:                      #afafaf;
+$lightest-gray:                   #efefef;
+$white:                           #ffffff;
+$cream:                           #f9f6f3;
+
+// Resets - - - - - - - - - - - - - - - -
+html {
+  margin: 0;
+  padding: 0;
+}
 
 body {
-  color: blue;
+  margin: 0;
+  padding: 0;
+  font: 300 16px/24px $ClearSans;
+  letter-spacing: 1px;
+  color: $dark-gray;
+  background-color: $cream;
 }
+
+h1, h2, h3, h4 {
+  font-family: $ClearSans;
+  font-weight: 300;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+// Global - - - - - - - - - - - - - - - -
+.container {
+  width: 100%;
+  max-width: 48em;
+  margin: 0 auto;
+}
+
+.block {
+  width: 100%;
+  @include box-sizing(border-box);
+  padding: 4em 1em;
+}
+
+.btn {
+  display: inline-block;
+  padding: .75em 1em;
+  background-color: transparent;
+  color: $white;
+  @include border-radius(3px);
+  border: 1px solid $white;
+  text-decoration: none;
+  font-family: $ClearSans;
+  font-size: 0.75em;
+  cursor: pointer;
+  @include transition(background-color 75ms linear, color 75ms linear);
+  &:hover {
+    background-color: $white;
+    color: $green;
+  }
+  &.red {
+    border: 1px solid $red;
+    color: $red;
+    &:hover {
+      background-color: $red;
+      color: $white;
+    }
+  }
+}
+
+// Top Banner - - - - - - - - - - - - - - - -
+.banner {
+  padding: 4em 0;
+  color: white;
+  background-color: green;
+}
+
+.banner-copy {
+  text-align: center;
+}
+
+.navigation {
+  @extend %clearfix;
+  margin-bottom: 3em;
+  a {
+    color: white;
+    text-decoration: none;
+    padding-bottom: .25em;
+    border-bottom: 2px solid transparent;
+    @include transition(all 200ms linear);
+    &:hover {
+      border-bottom: 2px solid $white;
+    }
+  }
+}
+
+.navigation-title {
+  float: left;
+  font-size: 16px;
+  font-weight: 300;
+}
+
+.navigation-list {
+  float: right;
+  li {
+    display: inline;
+    padding-left: 2em;
+  }
+}
+
+
+// Footer - - - - - - - - - - - - - - - -
+footer {
+  padding: 4em;
+  background-color: $dark-gray;
+  color: $white;
+  li {
+    list-style-type: none;
+    margin-bottom: 1em;
+  }
+  a {
+    color: white;
+    text-decoration: none;
+    padding-bottom: .25em;
+    border-bottom: 2px solid transparent;
+    @include transition(all 200ms linear);
+    &:hover {
+      border-bottom: 2px solid $white;
+    }
+  }
+}
+
