@@ -270,7 +270,7 @@ balances and activity are returned as well.
   "max_balance": 10,    // only if group_id was given
   "min_balance": -10,   // only if group_id was given
   "active": false       // only if group_id was given
-} 
+}
 ```
 
 #### POST /1/group/create
@@ -291,10 +291,10 @@ _Returns_
 Returns an object containing the new group_id, group_name, and timezone.
 
 ```js
-{       
-  group_id: 1,      
-  group_name: "Esri PDX",       
-  timezone: "America/Los_Angeles"     
+{
+  group_id: 1,
+  group_name: "Esri PDX",
+  timezone: "America/Los_Angeles"
 }
 ```
 
@@ -317,11 +317,11 @@ current group information.
 
 ```js
 {
-  "group_id": 11,   
-  "group_name": "Esri PDX",   
-  "timezone": "America/Los_Angeles",   
-  "users_added": [  /* basic user profile info like in user/info */  ],   
-  "users_removed": [    ] 
+  "group_id": 11,
+  "group_name": "Esri PDX",
+  "timezone": "America/Los_Angeles",
+  "users_added": [  /* basic user profile info like in user/info */  ],
+  "users_removed": [    ]
 }
 ```
 

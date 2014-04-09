@@ -4,9 +4,9 @@
   "description": "Source for coffeetime.io site",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "grunt server"
+    "start": "grunt"
   },
-  "author": "",
+  "author": "Esri Portland R&D Center (http://pdx.esri.com)",
   "license": "ISC",
   "devDependencies": {
     "grunt": "~0.4.4",
