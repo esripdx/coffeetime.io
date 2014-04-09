@@ -13,19 +13,23 @@
     <![endif]-->
   </head>
   <body>
-    <header>
-      <nav>
-        <h3 class="navigation-title">Coffee Time</h3>
-        <ul class="navigation-list">
-          <li>
-            <a href="/">Home</a>
-          </li>
-        </ul>
-      </nav>
-      <section>
-        <img src="img/coffee-time-logo.svg" alt="Coffee Time" class="coffee-time-logo">
-        <h1>Coffee Time API</h1>
-      </section>
+    <header class="banner">
+      <div class="container">
+        <nav class="navigation">
+          <h3 class="navigation-title"><a href="/">Coffee Time</a></h3>
+          <ul class="navigation-list">
+            <li>
+              <a class="current" href="/api">API</a>
+            </li>
+            <li>
+              <a href="#">Android</a>
+            </li>
+            <li>
+              <a href="#">iOS</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
     </header>
 
     <main>
@@ -67,12 +71,12 @@
             <a href="#">iOS</a>
           </li>
           <li>
-            <a href="psx.esri.com">Esri PDX R&D</a>
+            <a href="http://pdx.esri.com">Esri PDX R&D</a>
           </li>
         </ul>
       </div>
     </footer>
 
-    <script src="assets/js/script.js" type="text/javascript"></script>
+    <script src="../assets/js/script.js" type="text/javascript"></script>
   </body>
 </html>
