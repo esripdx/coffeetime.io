@@ -11,6 +11,8 @@
   "devDependencies": {
     "grunt": "^0.4.4",
     "grunt-contrib-watch": "^0.6.1",
-    "grunt-contrib-compass": "^0.7.2"
+    "grunt-contrib-compass": "^0.7.2",
+    "marked": "^0.3.2",
+    "handlebars": "^2.0.0-alpha.2"
   }
 }
