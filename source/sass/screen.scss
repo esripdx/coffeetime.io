@@ -107,9 +107,27 @@ img {
 
 // Top Banner - - - - - - - - - - - - - - - -
 .banner {
+  position: relative;
   padding: 2em 0;
   color: $white;
-  background-color: $green;
+  background: url(../img/banner.gif) center center no-repeat $green;
+  background-size: cover;
+  &:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url(../img/mesh.png) center center repeat transparent;
+    pointer-events: none;
+    z-index: 1;
+  }
+  .container {
+    position: relative;
+    z-index: 2;
+  }
 }
 
 .banner-copy {
