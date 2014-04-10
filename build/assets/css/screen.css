@@ -151,18 +151,38 @@ img {
 
 /* line 109, ../../../source/sass/screen.scss */
 .banner {
+  position: relative;
   padding: 2em 0;
   color: white;
-  background-color: #55a33b;
+  background: url(../img/banner.gif) center center no-repeat #55a33b;
+  background-size: cover;
+}
+/* line 115, ../../../source/sass/screen.scss */
+.banner:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url(../img/mesh.png) center center repeat transparent;
+  pointer-events: none;
+  z-index: 1;
+}
+/* line 127, ../../../source/sass/screen.scss */
+.banner .container {
+  position: relative;
+  z-index: 2;
 }
 
-/* line 115, ../../../source/sass/screen.scss */
+/* line 133, ../../../source/sass/screen.scss */
 .banner-copy {
   margin: 3em 0 2em;
   text-align: center;
 }
 
-/* line 122, ../../../source/sass/screen.scss */
+/* line 140, ../../../source/sass/screen.scss */
 .navigation a {
   color: white;
   text-decoration: none;
@@ -173,29 +193,29 @@ img {
   -o-transition: all 200ms linear;
   transition: all 200ms linear;
 }
-/* line 128, ../../../source/sass/screen.scss */
+/* line 146, ../../../source/sass/screen.scss */
 .navigation a:hover, .navigation a.current {
   border-bottom: 2px solid white;
 }
 
-/* line 134, ../../../source/sass/screen.scss */
+/* line 152, ../../../source/sass/screen.scss */
 .navigation-list {
   text-align: center;
 }
-/* line 136, ../../../source/sass/screen.scss */
+/* line 154, ../../../source/sass/screen.scss */
 .navigation-list li {
   display: inline;
   padding-left: 2em;
 }
 
-/* line 142, ../../../source/sass/screen.scss */
+/* line 160, ../../../source/sass/screen.scss */
 li.navigation-title {
   padding-left: 0;
   padding-right: 1.5em;
   border-right: 2px solid white;
 }
 
-/* line 148, ../../../source/sass/screen.scss */
+/* line 166, ../../../source/sass/screen.scss */
 li.navigation-end {
   margin-left: 1.5em;
   padding-left: 1.5em;
@@ -203,14 +223,14 @@ li.navigation-end {
   border-left: 2px solid white;
 }
 
-/* line 155, ../../../source/sass/screen.scss */
+/* line 173, ../../../source/sass/screen.scss */
 .logo {
   width: 42.91845%;
   margin: auto;
   margin-bottom: 32px;
 }
 
-/* line 162, ../../../source/sass/screen.scss */
+/* line 180, ../../../source/sass/screen.scss */
 .content-left, .content-right {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -219,17 +239,17 @@ li.navigation-end {
   padding: 1rem;
 }
 
-/* line 168, ../../../source/sass/screen.scss */
+/* line 186, ../../../source/sass/screen.scss */
 .content-left {
   float: left;
 }
 
-/* line 173, ../../../source/sass/screen.scss */
+/* line 191, ../../../source/sass/screen.scss */
 .content-right {
   float: right;
 }
 
-/* line 178, ../../../source/sass/screen.scss */
+/* line 196, ../../../source/sass/screen.scss */
 .illustration-left, .illustration-right {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -238,44 +258,44 @@ li.navigation-end {
   text-align: center;
 }
 
-/* line 184, ../../../source/sass/screen.scss */
+/* line 202, ../../../source/sass/screen.scss */
 .illustration-left {
   float: left;
 }
 
-/* line 189, ../../../source/sass/screen.scss */
+/* line 207, ../../../source/sass/screen.scss */
 .illustration-right {
   float: right;
 }
 
-/* line 198, ../../../source/sass/screen.scss */
+/* line 216, ../../../source/sass/screen.scss */
 .light-gray {
   background-color: #efefef;
 }
 
-/* line 202, ../../../source/sass/screen.scss */
+/* line 220, ../../../source/sass/screen.scss */
 .light-red {
   background-color: #ed7264;
 }
 
-/* line 207, ../../../source/sass/screen.scss */
+/* line 225, ../../../source/sass/screen.scss */
 .api-reference {
   margin: 4em 0;
 }
 
-/* line 212, ../../../source/sass/screen.scss */
+/* line 230, ../../../source/sass/screen.scss */
 footer {
   padding: 4em;
   background-color: #333333;
   color: white;
 }
-/* line 217, ../../../source/sass/screen.scss */
+/* line 235, ../../../source/sass/screen.scss */
 footer .footer-title {
   padding-right: 0;
   padding-left: 2em;
   border-left: 2px solid white;
 }
-/* line 223, ../../../source/sass/screen.scss */
+/* line 241, ../../../source/sass/screen.scss */
 footer a {
   color: white;
   text-decoration: none;
@@ -286,7 +306,7 @@ footer a {
   -o-transition: all 200ms linear;
   transition: all 200ms linear;
 }
-/* line 229, ../../../source/sass/screen.scss */
+/* line 247, ../../../source/sass/screen.scss */
 footer a:hover {
   border-bottom: 2px solid white;
 }
