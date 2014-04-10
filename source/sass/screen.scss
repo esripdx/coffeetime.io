@@ -18,6 +18,9 @@ $cream:                           #f9f6f3;
 $main-ratio: 1/1.6*100%;
 $reciprocal-ratio: 100%-$main-ratio;
 
+// Type
+$baseline: 26px;
+
 // Resets - - - - - - - - - - - - - - - -
 html {
   margin: 0;
@@ -41,6 +44,7 @@ h1, h2, h3, h4 {
 h1 {
   font-size: 1.875rem;
 }
+
 
 ul {
   margin: 0;
@@ -203,10 +207,6 @@ li.navigation-end {
   background-color: $light-red;
 }
 
-// API Ref  - - - - - - - - - - - - - - -
-.api-reference {
-  margin: 4em 0;
-}
 
 // Footer - - - - - - - - - - - - - - - -
 footer {
@@ -232,3 +232,71 @@ footer {
   }
 }
 
+// API Ref  - - - - - - - - - - - - - - -
+.api-reference {
+  margin: 4em 0;
+}
+
+.content {
+  h2 {
+    text-align: center;
+    margin-bottom: 2*$baseline;
+  }
+
+  h3 {
+    text-align: center;
+    border-top: 2px solid $dark-gray;
+    padding-top: 13px;
+    // font-weight: normal;/
+    margin-top: 2*$baseline;
+  }
+
+  h4 {
+    border-top: 1px solid $dark-gray;
+    padding-top: 13px;
+    margin-top: 2*$baseline;
+    // font-weight: normal;/
+  }
+}
+
+pre {
+  background-color: $dark-gray;
+  padding: 2rem;
+  color: $cream;
+  border: 2px solid $white;
+}
+
+table {
+  width: 100%;
+  // border-collapse: collapse;
+  // border-spacing: 0;
+  // padding: 0 2rem 2rem 2rem;
+  border: 2px solid $dark-gray;
+}
+
+thead {
+  padding: 0 2rem;
+  color: $white;
+  background-color: $dark-gray;
+}
+
+tr {
+  &:nth-child(even) {
+    background-color: mix($dark-gray, $cream);
+    color: $white;
+  }
+}
+
+th {
+  text-align: left;
+  padding: 1rem 2rem;
+  // display: inline-block;
+  // width: 45%;
+}
+
+td {
+  text-align: left;
+  padding: 1rem 2rem;
+  // display: inline-block;
+  // width: 45%;
+}
