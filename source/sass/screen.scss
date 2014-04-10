@@ -1,6 +1,7 @@
 @import "compass";
 @import "mixins";
 @import "typefaces";
+@import "scary-internet-css";
 
 // Colors - - - - - - - - - - - - - - - -
 $red:                             #CB4400;
@@ -209,6 +210,7 @@ li.navigation-end {
 
 .light-red {
   background-color: $light-red;
+  color: $white;
 }
 
 
@@ -242,12 +244,15 @@ footer {
 }
 
 .console-coffee {
-  padding: 0 2rem 2rem 2rem;
   text-align: left;
-  overflow: hidden;
-  letter-spacing: 0.33em;
-  @include border-radius(8px);
-  color: mix($white, $green);
+  pre {
+    color: mix($white, $green);
+    padding: 0 1rem 1rem;
+    margin: 0;
+    letter-spacing: 0.33em;
+    border: none;
+    background-color: transparent;
+  }
 }
 
 @-webkit-keyframes blink {
@@ -270,6 +275,10 @@ footer {
   @include experimental(animation-name, blink);
   @include experimental(animation-duration, 1s);
   @include experimental(animation-iteration-count, infinite);
+}
+
+.no-track {
+  letter-spacing: 0;
 }
 
 .content {

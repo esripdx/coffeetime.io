@@ -1,3 +1,4 @@
+
 ## Application Interface
 
 The application interface for the _Coffee Scoreboard_ is an opinionated
