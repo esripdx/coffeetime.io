@@ -13,7 +13,7 @@
     <![endif]-->
   </head>
   <body>
-    <header class="banner">
+    <header class="api-banner">
       <div class="container">
         <nav class="navigation">
           <ul class="navigation-list">
@@ -47,8 +47,7 @@
     </div>
   </div>
   <div id="body">
-<pre><code>
-<span class="no-track">Last login: Today on ttys003</span>
+<pre><code><span class="no-track">Last login: Today on ttys003</span>
 
       ))))
      ((((
