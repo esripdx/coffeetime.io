@@ -60,6 +60,10 @@ img {
   max-width: 100%;
 }
 
+code {
+  @extend %Inconsolata;
+}
+
 // Global - - - - - - - - - - - - - - - -
 .container {
   width: 100%;
@@ -235,6 +239,37 @@ footer {
 // API Ref  - - - - - - - - - - - - - - -
 .api-reference {
   margin: 4em 0;
+}
+
+.console-coffee {
+  padding: 0 2rem 2rem 2rem;
+  text-align: left;
+  overflow: hidden;
+  letter-spacing: 0.33em;
+  @include border-radius(8px);
+  color: mix($white, $green);
+}
+
+@-webkit-keyframes blink {
+  0% {   @include opacity(1); }
+  50% {  @include opacity(0); }
+  100% { @include opacity(1); }
+}
+@-moz-keyframes blink {
+  0% {   @include opacity(1); }
+  50% {  @include opacity(0); }
+  100% { @include opacity(1); }
+}
+@keyframes blink {
+  0% {   @include opacity(1); }
+  50% {  @include opacity(0); }
+  100% { @include opacity(1); }
+}
+
+.blink {
+  @include experimental(animation-name, blink);
+  @include experimental(animation-duration, 1s);
+  @include experimental(animation-iteration-count, infinite);
 }
 
 .content {
