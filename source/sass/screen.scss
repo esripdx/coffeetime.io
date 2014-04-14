@@ -46,6 +46,10 @@ h1 {
   font-size: 1.875rem;
 }
 
+h2 {
+  line-height: 1.35em;
+}
+
 
 ul {
   margin: 0;
@@ -76,6 +80,7 @@ code {
   width: 100%;
   @include box-sizing(border-box);
   padding: 4em 1em;
+  overflow: hidden;
 }
 
 .btn {
@@ -239,6 +244,58 @@ li.navigation-end {
   color: $white;
 }
 
+.clearfix {
+  @extend %clearfix;
+}
+
+@media screen and (max-width: 680px) {
+  .illustration-right, .illustration-left, .content-left, .content-right {
+    width: 100%;
+  }
+  .footer-list.navigation-list .navigation-title {
+    width: 100%;
+    padding: 0;
+    text-align: center;
+    display: block;
+    margin-bottom: 2em;
+  }
+  .footer-list  li.navigation-title {
+    border: none;
+    padding-right: 1em;
+  }
+  .footer-list.navigation-list li {
+      padding: 0 .5em;
+      font-size: .85em;
+  }
+  .footer-list li.navigation-end {
+    width: 100%;
+    display: block;
+    border: none;
+    padding: 0;
+    margin: 1em 0 0 0;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  li.navigation-title {
+    border: none;
+    padding-right: 1em;
+  }
+  .navigation-list li {
+    padding-left: .5em;
+    font-size: .85em;
+  }
+  .banner-copy {
+    padding: 0 .5em;
+  }
+  .block {
+    padding: 2em 1em;
+  }
+  .content-left, .content-right {
+    padding: 0;
+  }
+}
 
 // Footer - - - - - - - - - - - - - - - -
 footer {
