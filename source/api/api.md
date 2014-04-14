@@ -109,6 +109,7 @@ An object showing success.
 }
 ```
 
+
 #### GET /1/group/list
 
 Retrieves the list of groups the user tied to the access token is part of.
@@ -316,11 +317,12 @@ with a zero balance.
 
 _Parameters_
 
-Parameter | Description
-----------|------------
-github_team_id | Organization ID from GitHub
-name      | Name of the organization
-timezone  | Optional Timezone (name) to be used for the organization
+Parameter       | Description
+----------------|------------
+github_team_id  | Organization ID from GitHub
+name            | Optional Name of the organization
+timezone        | Optional Timezone (name) to be used for the organization
+timezone_offset | Optional Timezone (offset in seconds)
 
 _Returns_
 
@@ -340,11 +342,12 @@ Updates the list of members in the group from the GitHub organization.
 
 _Parameters_
 
-Parameter | Description
-----------|------------
-group_id  | Group ID to update
-name      | Optional Name of the organization
-timezone  | Optional Timezone (name) to be used for the organization
+Parameter       | Description
+----------------|------------
+group_id        | Group ID to update
+name            | Optional Name of the organization
+timezone        | Optional Timezone (name) to be used for the organization
+timezone_offset | Optional Timezone (offset in seconds)
 
 _Returns_
 
