@@ -245,6 +245,41 @@ Returns the same object as `/1/group/info`.
 }
 ```
 
+#### GET /1/transaction/info
+
+Retrieve information about a transaction
+
+_Parameters_
+
+Parameter      | Description
+-----------------------------------------------
+transaction_id | The transaction ID to retrieve
+
+_Returns_
+
+Returns the same format as `/1/group/info` but there will always be only one transaction in the "transactions" array.
+
+
+#### GET /1/transaction/history
+
+Retrieve a list of transactions from a group.
+
+_Parameters_
+
+Parameter | Description
+----------|------------
+group_id  | Group ID to query for
+
+
+_Returns_
+
+Returns the list of transactions and all users in the list of transactions, just like `/1/group/info`.
+However, all summary sentences will include both usernames rather than be changed to
+a sentence like "you bought...".
+
+
+
+
 #### GET /1/user/info
 
 Retrieves user information for a user.
