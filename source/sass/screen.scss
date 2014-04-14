@@ -1,6 +1,7 @@
 @import "compass";
 @import "mixins";
 @import "typefaces";
+@import "scary-internet-css";
 
 // Colors - - - - - - - - - - - - - - - -
 $red:                             #CB4400;
@@ -17,6 +18,9 @@ $cream:                           #f9f6f3;
 
 $main-ratio: 1/1.6*100%;
 $reciprocal-ratio: 100%-$main-ratio;
+
+// Type
+$baseline: 26px;
 
 // Resets - - - - - - - - - - - - - - - -
 html {
@@ -42,6 +46,7 @@ h1 {
   font-size: 1.875rem;
 }
 
+
 ul {
   margin: 0;
   padding: 0;
@@ -54,6 +59,10 @@ figure {
 
 img {
   max-width: 100%;
+}
+
+code {
+  @extend %Inconsolata;
 }
 
 // Global - - - - - - - - - - - - - - - -
@@ -110,7 +119,7 @@ img {
   position: relative;
   padding: 2em 0;
   color: $white;
-  background: url(../img/banner.gif) center center no-repeat $green;
+  background: url(../img/banner-alt.gif) center center no-repeat $green;
   background-size: cover;
   &:after {
     content: "";
@@ -128,6 +137,13 @@ img {
     position: relative;
     z-index: 2;
   }
+}
+
+.api-banner {
+  position: relative;
+  padding: 2em 0;
+  color: $white;
+  background-color: $green;
 }
 
 .banner-copy {
@@ -171,9 +187,9 @@ li.navigation-end {
 }
 
 .logo {
-  width: 1/2.33*100%;
+  width: 1/3.33*100%;
   margin: auto;
-  margin-bottom: 32px;
+  margin: 64px auto;
 }
 
 // Main - - - - - - - - - - - - - - - - -
@@ -219,12 +235,9 @@ li.navigation-end {
 
 .light-red {
   background-color: $light-red;
+  color: $white;
 }
 
-// API Ref  - - - - - - - - - - - - - - -
-.api-reference {
-  margin: 4em 0;
-}
 
 // Footer - - - - - - - - - - - - - - - -
 footer {
@@ -250,3 +263,109 @@ footer {
   }
 }
 
+// API Ref  - - - - - - - - - - - - - - -
+.api-reference {
+  margin: 4em 0;
+}
+
+.console-coffee {
+  text-align: left;
+  pre {
+    color: mix($white, $green);
+    padding: 0 1rem 1rem;
+    margin: 0;
+    letter-spacing: 0.33em;
+    border: none;
+    background-color: transparent;
+  }
+}
+
+@-webkit-keyframes blink {
+  0% {   @include opacity(1); }
+  50% {  @include opacity(0); }
+  100% { @include opacity(1); }
+}
+@-moz-keyframes blink {
+  0% {   @include opacity(1); }
+  50% {  @include opacity(0); }
+  100% { @include opacity(1); }
+}
+@keyframes blink {
+  0% {   @include opacity(1); }
+  50% {  @include opacity(0); }
+  100% { @include opacity(1); }
+}
+
+.blink {
+  @include experimental(animation-name, blink);
+  @include experimental(animation-duration, 1s);
+  @include experimental(animation-iteration-count, infinite);
+}
+
+.no-track {
+  letter-spacing: 0;
+}
+
+.content {
+  h2 {
+    text-align: center;
+    margin-bottom: 2*$baseline;
+  }
+
+  h3 {
+    text-align: center;
+    border-top: 2px solid $dark-gray;
+    padding-top: 13px;
+    font-weight: normal;
+    margin-top: 2*$baseline;
+  }
+
+  h4 {
+    border-top: 1px solid $dark-gray;
+    padding-top: 13px;
+    margin-top: 2*$baseline;
+    font-weight: normal;
+  }
+}
+
+pre {
+  background-color: $dark-gray;
+  padding: 2rem;
+  color: $cream;
+  border: 2px solid $white;
+}
+
+table {
+  width: 100%;
+  // border-collapse: collapse;
+  // border-spacing: 0;
+  // padding: 0 2rem 2rem 2rem;
+  border: 2px solid $dark-gray;
+}
+
+thead {
+  padding: 0 2rem;
+  color: $white;
+  background-color: $dark-gray;
+}
+
+tr {
+  &:nth-child(even) {
+    background-color: mix($dark-gray, $cream);
+    color: $white;
+  }
+}
+
+th {
+  text-align: left;
+  padding: 1rem 2rem;
+  // display: inline-block;
+  // width: 45%;
+}
+
+td {
+  text-align: left;
+  padding: 1rem 2rem;
+  // display: inline-block;
+  // width: 45%;
+}

@@ -61,3 +61,10 @@ $ClearSans: 'Clear Sans', 'Helvetica', 'Arial', sans-serif !default;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+@font-face{font-family:'Inconsolata';font-style:normal;font-weight:400;src:local(''),url(//brick.a.ssl.fastly.net/fonts/inconsolata/400.woff) format('woff')}
+
+%Inconsolata {
+  font-family: 'Inconsolata';
+}
+

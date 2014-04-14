@@ -13,7 +13,7 @@
     <![endif]-->
   </head>
   <body>
-    <header class="banner">
+    <header class="api-banner">
       <div class="container">
         <nav class="navigation">
           <ul class="navigation-list">
@@ -32,8 +32,37 @@
           </ul>
         </nav>
         <section class="banner-copy">
-          <figure>
-            <img src="/assets/img/terminal.svg" alt="Coffee Time Terminal">
+          <figure  class="console-coffee">
+<div id="window">
+  <div id="toolbar">
+    <div class="top">
+      <div id="lights">
+        <div class="light red">
+        </div>
+        <div class="light yellow">
+        </div>
+        <div class="light green">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="body">
+<pre><code><span class="no-track">Last login: Today on ttys003</span>
+
+      ))))
+     ((((
+      ))))
+   _ .---.
+  ( |`---'|
+   \|     |
+   : .___, :
+    `-----'
+---------------
+
+<span class="no-track">kikuchiyo@toho ~ $</span><span class="blink"> _</span>
+</code></pre>
+  </div>
+</div>
           </figure>
           <h1>Coffee Time API Reference</h1>
         </section>
