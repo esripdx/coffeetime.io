@@ -218,6 +218,7 @@ li.navigation-end {
   @include box-sizing(border-box);
   width: $reciprocal-ratio;
   text-align: center;
+  max-width: 250px;
 }
 
 .illustration-left {
