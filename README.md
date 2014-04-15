@@ -1,6 +1,6 @@
 # coffeetime.io
 
-Simple two-page site for Coffee Time app from Esri PDX R&D
+Simple two-page site for the CoffeeTime app from Esri PDX.
 
 ## Contents
 
@@ -29,6 +29,3 @@ grunt # this will build files from source, start a server at localhost:8080, and
 grunt build
 ```
 
-## License
-
-ISC
