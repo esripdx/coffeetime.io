@@ -1,4 +1,3 @@
-
 ## Application Interface
 
 The application interface for the _Coffee Scoreboard_ is an opinionated
@@ -108,6 +107,7 @@ An object showing success.
   "status": "ok"
 }
 ```
+
 
 #### GET /1/group/list
 
@@ -245,6 +245,41 @@ Returns the same object as `/1/group/info`.
 }
 ```
 
+#### GET /1/transaction/info
+
+Retrieve information about a transaction
+
+_Parameters_
+
+Parameter | Description
+----------|------------
+transaction_id | The transaction ID to retrieve
+
+_Returns_
+
+Returns the same format as `/1/group/info` but there will always be only one transaction in the "transactions" array.
+
+
+#### GET /1/transaction/history
+
+Retrieve a list of transactions from a group.
+
+_Parameters_
+
+Parameter | Description
+----------|------------
+group_id  | Group ID to query for
+
+
+_Returns_
+
+Returns the list of transactions and all users in the list of transactions, just like `/1/group/info`.
+However, all summary sentences will include both usernames rather than be changed to
+a sentence like "you bought...".
+
+
+
+
 #### GET /1/user/info
 
 Retrieves user information for a user.
@@ -281,11 +316,12 @@ with a zero balance.
 
 _Parameters_
 
-Parameter | Description
-----------|------------
-github_team_id | Organization ID from GitHub
-name      | Name of the organization
-timezone  | Optional Timezone (name) to be used for the organization
+Parameter       | Description
+----------------|------------
+github_team_id  | Organization ID from GitHub
+name            | Optional Name of the organization
+timezone        | Optional Timezone (name) to be used for the organization
+timezone_offset | Optional Timezone (offset in seconds)
 
 _Returns_
 
@@ -305,11 +341,12 @@ Updates the list of members in the group from the GitHub organization.
 
 _Parameters_
 
-Parameter | Description
-----------|------------
-group_id  | Group ID to update
-name      | Optional Name of the organization
-timezone  | Optional Timezone (name) to be used for the organization
+Parameter       | Description
+----------------|------------
+group_id        | Group ID to update
+name            | Optional Name of the organization
+timezone        | Optional Timezone (name) to be used for the organization
+timezone_offset | Optional Timezone (offset in seconds)
 
 _Returns_
 

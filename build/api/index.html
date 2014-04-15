@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
-    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1">
     <title>Coffee Time</title>
     <link rel="shortcut icon" href="/assets/img/favicon.ico">
     <link type="text/css" rel="stylesheet" href="/assets/css/screen.css">
@@ -333,6 +333,46 @@ as well as the latest transactions up to 20.</p>
   ]
 }
 </code></pre>
+<h4 id="get-1-transaction-info">GET /1/transaction/info</h4>
+<p>Retrieve information about a transaction</p>
+<p><em>Parameters</em></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>transaction_id</td>
+<td>The transaction ID to retrieve</td>
+</tr>
+</tbody>
+</table>
+<p><em>Returns</em></p>
+<p>Returns the same format as <code>/1/group/info</code> but there will always be only one transaction in the &quot;transactions&quot; array.</p>
+<h4 id="get-1-transaction-history">GET /1/transaction/history</h4>
+<p>Retrieve a list of transactions from a group.</p>
+<p><em>Parameters</em></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>group_id</td>
+<td>Group ID to query for</td>
+</tr>
+</tbody>
+</table>
+<p><em>Returns</em></p>
+<p>Returns the list of transactions and all users in the list of transactions, just like <code>/1/group/info</code>.
+However, all summary sentences will include both usernames rather than be changed to
+a sentence like &quot;you bought...&quot;.</p>
 <h4 id="get-1-user-info">GET /1/user/info</h4>
 <p>Retrieves user information for a user.</p>
 <p><em>Parameters</em></p>
@@ -386,11 +426,15 @@ with a zero balance.</p>
 </tr>
 <tr>
 <td>name</td>
-<td>Name of the organization</td>
+<td>Optional Name of the organization</td>
 </tr>
 <tr>
 <td>timezone</td>
 <td>Optional Timezone (name) to be used for the organization</td>
+</tr>
+<tr>
+<td>timezone_offset</td>
+<td>Optional Timezone (offset in seconds)</td>
 </tr>
 </tbody>
 </table>
@@ -424,6 +468,10 @@ with a zero balance.</p>
 <tr>
 <td>timezone</td>
 <td>Optional Timezone (name) to be used for the organization</td>
+</tr>
+<tr>
+<td>timezone_offset</td>
+<td>Optional Timezone (offset in seconds)</td>
 </tr>
 </tbody>
 </table>
