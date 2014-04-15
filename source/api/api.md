@@ -1,4 +1,3 @@
-
 ## Application Interface
 
 The application interface for the _Coffee Scoreboard_ is an opinionated
@@ -252,7 +251,7 @@ Retrieve information about a transaction
 
 _Parameters_
 
-Parameter      | Description
+Parameter | Description
 -----------------------------------------------
 transaction_id | The transaction ID to retrieve
 
