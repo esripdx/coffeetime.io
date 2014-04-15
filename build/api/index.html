@@ -23,12 +23,13 @@
             <li>
               <a class="current" href="/api">API</a>
             </li>
-            <li>
+<!-- UNCOMMENT WHREN APP IS RELEASED             -->
+<!--             <li>
               <a href="#">Android</a>
             </li>
             <li>
               <a href="#">iOS</a>
-            </li>
+            </li> -->
           </ul>
         </nav>
         <section class="banner-copy">
@@ -59,7 +60,7 @@
     `-----'
 ---------------
 
-<span class="no-track">kikuchiyo@toho ~ $</span><span class="blink"> _</span>
+<span class="no-track">kambei@toho ~ $</span><span class="blink"> _</span>
 </code></pre>
   </div>
 </div>
@@ -335,8 +336,20 @@ as well as the latest transactions up to 20.</p>
 <h4 id="get-1-transaction-info">GET /1/transaction/info</h4>
 <p>Retrieve information about a transaction</p>
 <p><em>Parameters</em></p>
-<h2 id="parameter-description">Parameter      | Description</h2>
-<p>transaction_id | The transaction ID to retrieve</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>transaction_id</td>
+<td>The transaction ID to retrieve</td>
+</tr>
+</tbody>
+</table>
 <p><em>Returns</em></p>
 <p>Returns the same format as <code>/1/group/info</code> but there will always be only one transaction in the &quot;transactions&quot; array.</p>
 <h4 id="get-1-transaction-history">GET /1/transaction/history</h4>
@@ -620,12 +633,13 @@ last status returned.</p>
             <li>
               <a class="current" href="/api">API</a>
             </li>
-            <li>
+<!-- UNCOMMENT WHREN APP IS RELEASED             -->
+<!--             <li>
               <a href="#">Android</a>
             </li>
             <li>
               <a href="#">iOS</a>
-            </li>
+            </li> -->
             <li class="navigation-end">
               <a href="http://pdx.esri.com">Esri PDX R&amp;D</a>
             </li>
