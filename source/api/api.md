@@ -252,7 +252,7 @@ Retrieve information about a transaction
 _Parameters_
 
 Parameter | Description
------------------------
+----------|------------
 transaction_id | The transaction ID to retrieve
 
 _Returns_
